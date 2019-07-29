@@ -1,19 +1,17 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib import admin
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-class users(models.Model):
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
-    Fname = models.CharField(max_length=100)
-    Lname = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
     phone = models.CharField(max_length=100)
     picture = models.ImageField(upload_to='users')
 
     def __str__(self):
-        return self.username
+        return self.user.username
 
 
 Clinics = (('Dintistry','Dintistry'), ('Pediatrics','Pediatrics'), ('Dermatology','Dermatology'), ('General Medicine','General Medicine'), ('Surgery','Surgery'), ('Physical Therapy', 'Physical Therapy'), ('Neurologists','Neurologists'), ('Other','Other'))
@@ -36,8 +34,5 @@ class doctors(models.Model):
     def __str__(self):
         return self.full_name
 
-
-
-    
 
 
