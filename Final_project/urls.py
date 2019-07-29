@@ -19,6 +19,14 @@ from Final_App import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home, name='home'),
-    path('about/', views.about, name ='about'),
+    path('home/', views.home_english, name='home_english'),
+    path('about/', views.about, name='about'),
+
+    path('home_arabic/', views.home_arabic, name ='home_arabic'),
+    path('contactus/', views.contactus, name ='contact'),
+    path('login/', views.login_user, name ='login'),
+    path('search/', views.search, name ='search'),
+    path('signup/', views.signup, name ='signup'),
+    path('doctorprofile/', views.Dprofile, name ='doctor'),
+    path('userprofile/', views.Uprofile, name ='user'),
 ]

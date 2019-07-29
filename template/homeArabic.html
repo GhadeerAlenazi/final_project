@@ -1,29 +1,8 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <script src="https://kit.fontawesome.com/8ee29b00f3.js"></script>
-        <link rel="stylesheet" href="style.css">
-    
-    <title>home ,الرئيسية </title>
-</head>
-<body>
-    <nav id="navbar">
-
-        <div class="contener">
-
-             <h1><a href="home.html"><span class="text-primary">فيزيتا.السعودية</span></a></h1>
-         <ul>
-                <li><a href="about.html"> أطبائنا</a></li>
-             <li><a class="current" href="contactUs.html">تواصل معنا</a></li>
-             <li><a href="home.html">ENGLISH</a></li>
-             <li><a href="login.html">الدخول</a></li>
-         </ul>
-         </div>
-     </nav>
+{% extends 'base.html'%}
+{% block title %}
+HOME ARABIC 
+{% endblock %}
+   {% block body %}
      <div id="slidshow">
         <div class="contener">
         <div class="slidshow-contener">
@@ -63,10 +42,4 @@
                </div>
         </div>
 
-    <footer id="main-footer" class="clr"> 
-        <p> فيزيتا-المملكة العربية السعودية​ &copy; 2019 all right reserved</p>
-    </footer>
-</body>
-</html>
-</body>
-</html>
+    {% endblock%}
