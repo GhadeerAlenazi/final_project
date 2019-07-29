@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/8ee29b00f3.js"></script>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+
+    <title>{% block tilte%}{% endblock %}</title>
+</head>
+<body>
+    <nav id="navbar">
+
+        <div class="contener">
+
+             <h1><a href="home.html"><span class="text-primary">Vezeeta.Saudi</span></a></h1>
+         <ul>
+                <li><a href="about.html"> For Doctors</a></li>
+             <li><a class="current" href="contactUs.html">Contact Us</a></li>
+             <li><a href="homeArabic.html">العربية</a></li>
+             <li><a href="login.html">Login</a></li>
+         </ul>
+         </div>
+     </nav>
+     {% block body %}{% endblock %}
+     <footer id="main-footer" class="clr"> 
+        <p> Vezeeta - Saudi Arabia​ &copy; 2019 all right reserved</p>
+    </footer>
+</body>
+</html>
