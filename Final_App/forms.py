@@ -1,14 +1,21 @@
 from django import forms
-from .models import Profile, doctors
+from .models import Profile, doctors, User
 
-class signup_form(forms.ModelForm):
+
+class ProfileForm(forms.ModelForm):
     picture = forms.ImageField(required = False)
-    password = forms.CharField(widget = forms.PasswordInput)
-    email = forms.CharField(widget = forms.EmailInput)
-     
+
     class Meta:
         model = Profile
-        fields = ['picture', 'Username', 'First name', 'Last name', 'phone','email' ,'password']
+        fields = ['firstname','lastname','phone', 'picture']
+
+class signup_form(forms.ModelForm):
+    password = forms.CharField(widget = forms.PasswordInput)
+    # email = forms.CharField(widget = forms.EmailInput)
+     
+    class Meta:
+        model = User
+        fields = ['username','email' ,'password']
 
 class LoginForm(forms.Form):
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, reverse
 from django.http import HttpResponse
-from .forms import signup_form, LoginForm
+from .forms import signup_form, LoginForm, ProfileForm
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Profile, doctors
@@ -56,17 +56,26 @@ def thanks(request):
 
 def signup(request):
     form = signup_form()
+    profileform = ProfileForm()
     if request.method == 'POST':
         form = signup_form(request.POST)
+        profileform = ProfileForm(request.POST)
         if form.is_valid():
             item = form.save(commit=False)
             if 'picture' in request.FILES:
                 item.picture = request.FILES['picture']
-            item.save()
-            return HttpResponseRedirect('/thanks/')
+                item.set_password(item.password)
+                item.save()
+
+                puser = form.save(commit=False)
+                puser.user = item
+                puser.save()
+                item.save()
+                return HttpResponseRedirect('/thanks/')
 
     data = {
-        'form_signup': form
+        'form_signup': form,
+        'form_profile': profileform
     }
     return render(request, 'signup.html', data)  
 
