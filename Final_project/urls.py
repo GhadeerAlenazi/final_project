@@ -24,9 +24,11 @@ urlpatterns = [
     path('home_arabic/', views.home_arabic, name ='home_arabic'),
     path('contactus/', views.contactus, name ='contact'),
     path('login/', views.login_user, name ='login'),
+    path('logout/', views.user_logout, name='logout'),
     path('search/', views.search, name ='search'),
     path('signup/', views.signup, name ='signup'),
     path('doctorprofile/', views.Dprofile, name ='doctor'),
     path('userprofile/', views.Uprofile, name ='user'),
-    path('thanks/', views.thanks, name = 'thanks')
+    path('thanks/', views.thanks, name = 'thanks'),
+    path('result/<str:clinic>/<str:Hospital>/<str:Gender>/<str:City>', views.search_result, name='search_result'),
 ]

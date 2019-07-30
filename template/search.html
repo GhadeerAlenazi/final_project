@@ -5,7 +5,7 @@ SEARCH RESULT
    {% block body %}
 
              
-        <div class="clr"></div>
+        <!-- <div class="clr"></div>
         
                 <h3 id="heading1"> search by doctor name :</h3>
 
@@ -36,8 +36,16 @@ SEARCH RESULT
                                   <button class="but2"><a href="about.html">Search </a> </button>
                          </form>
                         
-                    </section> 
+                    </section>  -->
           
 
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token%}
+                        
+                        {{form_search.as_p}}
+                        <a href="{% url 'search_result'%}">Search</a>
+                        <input type="submit" value="Search" class="btn" >
+                      </form>
 
+                      
       {% endblock %}

@@ -2,59 +2,40 @@
 {% block title %}
 CONTACT US
 {% endblock %}
-   {% block body %}
-     <div id="backgroundcolor">
-         
-         
-         <div id="contactform">
+{% block body %}
+<div id="backgroundcolor">
 
-                <form action="#">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <br>
-                            <input type="text" name="name" id="name">
-                        </div>
-                        <div class="form-group">
-                               <label for="Number"> Mobile Number </label>
-                               <br>
-                               <input type="text" name="Number" id="Number">
-                           </div>
 
-                        <div class="form-group">
-                             <label for="E-mail"> E-mail Address </label>
-                             <br>
-                             <input type="text" name="E-mail" id="E-mail">
-                         </div>
+  <div id="container">
 
-                         <div class="form-group">
-                               <label for="Comments">  Comments </label>
-                               <br>
-                               <textarea name="Comments" id="Comments" cols="30" rows="10"></textarea> 
-                             </div>
-                               <br><br>
-                             <button class="but2"> Send </button>
-                    </form>
-                   
-        
-         </div>
+      <div class="signup">
+    <form action="" method="POST">
+      {% csrf_token%}
+      {{form.as_p}}
+      <input type="submit" value="Send" class="btn">
+    </form>
 
-         
-          <section id="infocontact">
-             
-            <h4>Call Us :</h4>
-             <h4>frome Saudi</h4>
-             <h5><i class="fas fa-phone-alt fa-1x"></i> 29000058</h5>
-             
-             <h4>Address :</h4>
-             <h4>The Eastem Ring Road ST,Gate 8,Offic number 19</h4>
-             
-             <h4>Mail Us :</h4>
-             <h4>vezetaa-xx@gmail.com</h4>
-             
-             <h4>Follow Us :</h4>
-             <h4><i class="fab fa-facebook-square fa-2x"></i> <i class="fab fa-twitter fa-2x"></i></h4>
 
-         </section>
-       
-     
-{% endblock %}
+  </div>
+</div>
+
+  <section id="infocontact">
+
+    <h4>Call Us :</h4>
+    <h4>frome Saudi</h4>
+    <h5><i class="fas fa-phone-alt fa-1x"></i> 29000058</h5>
+
+    <h4>Address :</h4>
+    <h4>The Eastem Ring Road ST,Gate 8,Offic number 19</h4>
+
+    <h4>Mail Us :</h4>
+    <h4>vezetaa-xx@gmail.com</h4>
+
+    <h4>Follow Us :</h4>
+    <h4><i class="fab fa-facebook-square fa-2x"></i> <i class="fab fa-twitter fa-2x"></i></h4>
+
+  </section>
+
+
+
+  {% endblock %}

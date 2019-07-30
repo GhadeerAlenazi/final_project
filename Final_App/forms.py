@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, doctors, User
+from .models import Profile, doctors, User, contact
 
 
 class ProfileForm(forms.ModelForm):
@@ -21,3 +21,19 @@ class LoginForm(forms.Form):
 
     username = forms.CharField(max_length = 100)
     password = forms.CharField(widget = forms.PasswordInput)
+
+class DoctorProfile(forms.ModelForm):
+    class Meta: 
+        model = doctors
+        fields = ['clinic','Hospital','Gender','City']
+
+class contactForm(forms.ModelForm):
+    user_name = forms.CharField(label = 'Your Name')
+    user_email = forms.CharField(label = 'Email')
+    user_text = forms.CharField(label = 'Message')
+    class Meta: 
+        model = contact
+        fields = '__all__'
+
+
+

@@ -2,5 +2,26 @@
 {% block title %}
 DOCTOR PROFILE
 {% endblock %}
-   {% block body %}
-   {% endblock %}
+{% block body %}
+
+{% for i in profile %}
+     
+<div class="box">
+
+   <!-- <img src="" alt=""> -->
+   <p class="lbl"><strong>Rateing: </strong> {{i.Rating}}</p> 
+   <p class="lbl"><strong>Doctor Name: </strong> {{i.full_name}}</p> 
+   <p class="lbl"><strong>PMajor: </strong> {{i.major}}</p> 
+   <p class="lbl"><strong>Clinic: </strong> {{i.Clinic}}</p> 
+   <p class="lbl"><strong>Hospital: </strong> {{i.Hospital}}</p>
+   <p class="lbl"><strong>Gender: </strong> {{i.Gender}}</p> 
+   <p class="lbl"><strong>Phone: </strong> {{i.Phone}}</p> 
+   <p class="lbl"><strong>Price: </strong> {{i.Price}}</p> 
+   <p class="lbl"><strong>city: </strong> {{i.city}}</p> 
+
+   
+   
+</div>
+{% endfor %}
+
+{% endblock %}

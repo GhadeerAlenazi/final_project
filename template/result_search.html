@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+{% block title %}
+SEARCH RESULT
+{% endblock %}
+{% block body %}
+
+
+<!-- <div class="clr"></div>
+        
+                <h3 id="heading1"> search by doctor name :</h3>
+
+                <section id="contact" class="by-3">
+                        
+                         <form action="#">
+                             <div class="form-group">
+                                 <label for="name">Doctor Name</label>
+                                 <input type="text" name="name" id="name">
+                             </div>
+                             <h3> OR </h3>
+
+                             <div class="form-group">
+                                    <label for="Specialty"> Choose Specialty </label>
+                                    <input type="text" name="Specialty" id="Specialty">
+                                </div>
+
+                             <div class="form-group">
+                                  <label for="city"> Choose City </label>
+                                  <input type="text" name="city" id="city">
+                              </div>
+
+                              <div class="form-group">
+                                    <label for="neighborhood"> Choose neighborhood </label>
+                                    <input type="text" name="neighborhood" id="neighborhood"> 
+                                  </div>
+
+                                  <button class="but2"><a href="about.html">Search </a> </button>
+                         </form>
+                        
+                    </section>  -->
+
+{% for i in form_search_result %}
+<p>{{form_search_result}}</p>
+<!-- <p>{{form_search_result.Clinc}}</p>
+<p>{{form_search_result.Hospital}}</p>
+<p>{{form_search_result.Gender}}</p>
+<p>{{form_search_result.City}}</p> -->
+{% endfor%}
+
+
+
+
+
+{% endblock %}

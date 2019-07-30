@@ -36,5 +36,10 @@ class doctors(models.Model):
     def __str__(self):
         return self.full_name
 
+class contact(models.Model):
+    user_name = models.CharField(max_length=100)
+    user_email = models.EmailField()
+    user_text = models.CharField(max_length=10000)
+
 
 

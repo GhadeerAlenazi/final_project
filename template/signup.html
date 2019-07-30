@@ -2,16 +2,24 @@
 {% block title %}
 THANK YOU
 {% endblock %}
-   {% block body %}
+{% block body %}
 
-  <div class="container">
+<div class="container">
+  <div class="signup_body">
+
+    <div class="signup">
       <h2>Dear user use the following form to create new account:</h2>
       <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token%}
         {{form_profile.as_p}}
         {{form_signup.as_p}}
         <input type="submit" value="Sign Up" class="btn">
-    </form>
+      </form>
+
+    </div>
   </div>
 
-    {% endblock %}
+
+</div>
+
+{% endblock %}
