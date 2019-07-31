@@ -43,9 +43,9 @@ SEARCH RESULT
                         {% csrf_token%}
                         
                         {{form_search.as_p}}
-                        <a href="{% url 'search_result'%}">Search</a>
                         <input type="submit" value="Search" class="btn" >
                       </form>
+
 
                       
       {% endblock %}

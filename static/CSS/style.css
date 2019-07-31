@@ -305,9 +305,46 @@ input{
     background-color: rgb(67, 137, 152) ;
 }
 
-  
+.list{
+    overflow: hidden ;
+    background-color: rgba(107, 164, 227, 0.50) ;
+    border: 2px black solid ;
+    margin: 20px;
+    padding: 20px;
+}
+.content{
+    float: left ;
+    width: 40%;
+    background-color: red ;
+   
+}
+.list img {
+    float: right ;
+    padding-top: 0px;
+    width: 15%;
+    height: 20%;
+}
+
+#id_clinic{
+    width: 140px;
+    
+}
+#id_Hospital{
+    
+    width: 140px;
 
 
+}
+
+#id_Gender{
+        width: 140px; 
+}
+
+#id_City{
+    width: 140px;
+
+
+}
 
 
 

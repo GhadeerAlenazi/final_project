@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from Final_App import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.home_english, name='home_english'),
@@ -30,5 +33,7 @@ urlpatterns = [
     path('doctorprofile/', views.Dprofile, name ='doctor'),
     path('userprofile/', views.Uprofile, name ='user'),
     path('thanks/', views.thanks, name = 'thanks'),
-    path('result/<str:clinic>/<str:Hospital>/<str:Gender>/<str:City>', views.search_result, name='search_result'),
-]
+    path('search_result/<str:clinic>/<str:Hospital>/<str:Gender>/<str:City>', views.search_result, name='search_result'),
+    # path(r'^search_result/(?P<clinic>\w+)/(?P<Hospital>\w+)/(?P<Gender>\w+)/(?P<City>\w+)/$', views.search_result, name='search_result'),
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

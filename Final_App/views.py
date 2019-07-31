@@ -73,7 +73,7 @@ def login_user(request):
 def search(request):
      
      form = DoctorProfile()
-
+     data_2 = []
      if request.method == 'POST':
         form = DoctorProfile(request.POST)
         if form.is_valid():
@@ -85,18 +85,19 @@ def search(request):
 
             item = form.save(commit=False)
             
-    
+            data_2= [clinic, Hospital, Gender, City]
             search_result(request, clinic, Hospital, Gender, City)
 
      data = {
         "form_search": form,
+        'data': data_2
         
     }
      return render(request, 'search.html', data) 
 
 def search_result(request, clinic, Hospital, Gender, City):
     try:
- 
+        
         form = doctors.objects.filter(clinic__icontains=clinic,
             Hospital__icontains=Hospital,
             Gender__icontains=Gender,
@@ -106,6 +107,8 @@ def search_result(request, clinic, Hospital, Gender, City):
 
     except:
         raise Http404()
+    
+
     
     data = {
         "form_search_result": form

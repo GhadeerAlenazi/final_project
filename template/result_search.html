@@ -39,11 +39,21 @@ SEARCH RESULT
                     </section>  -->
 
 {% for i in form_search_result %}
-<p>{{form_search_result}}</p>
-<!-- <p>{{form_search_result.Clinc}}</p>
-<p>{{form_search_result.Hospital}}</p>
-<p>{{form_search_result.Gender}}</p>
-<p>{{form_search_result.City}}</p> -->
+<div class="list">
+    <div class="content">
+            <p>Name: {{i.full_name}} &nbsp &nbsp Clinic: {{i.clinic}}</p>
+            <!-- <p>Clinic: {{i.clinic}}</p> -->
+            <p>Hospital: {{i.Hospital}} &nbsp &nbsp phone: {{i.phone}}</p>
+            <!-- <p>phone: {{i.phone}}</p> -->
+            <p>price: {{i.price}} &nbsp &nbsp Gender: {{i.Gender}}</p>
+            <!-- <p>Gender: {{i.Gender}}</p> -->
+            <p>City: {{i.City}} &nbsp &nbsp rating: {{i.rating}}</p>
+            <!-- <p>rating: {{i.rating}}</p> -->
+    </div>
+   
+    <img src="{{i.picture.url}}" alt="">
+</div>
+
 {% endfor%}
 
 
