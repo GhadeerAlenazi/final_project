@@ -5,7 +5,7 @@ SEARCH RESULT
 {% block body %}
 
 
-
+{% if form_search_result %}
 {% for i in form_search_result %}
 <div class="signup">
       <div class="list">
@@ -27,10 +27,7 @@ SEARCH RESULT
                   <!-- <p>To: {{i.to_date}}</p> -->
                   <!-- Counting Visitors using free hit counter -->
                   <div class="star">
-                        <div class="visitors_counter">
-
-                              <script type="text/javascript" src="https://freehitcounters.org/count/2dzi"></script><br>
-                        </div>
+                        
 
                         <!-- Rating Stars -->
 
@@ -66,7 +63,10 @@ SEARCH RESULT
                               </label>
                         </div>
 
+                        <div class="visitors_counter">
 
+                              <script type="text/javascript" src="https://freehitcounters.org/count/2dzi"></script><br>
+                        </div>
                   </div>
 
 
@@ -78,6 +78,7 @@ SEARCH RESULT
                   <div id='booking'>
 
                         {% csrf_token %}
+                        <h5>Select the appropriate date:</h5>
                        
                         <!-- <button type="submit" name="date" value={{i.to_date}} form = 'systemform'>{{i.to_date}}</button> -->
                         <button type ='submit' name="date" value="July 31,2019, 12:00 p.m" form = 'systemform' class="btndate">July 31,2019, 12:00 p.m</button><br>
@@ -96,8 +97,19 @@ SEARCH RESULT
 </div>
 
 {% endfor%}
+{% else %}
+<div class="container">
+            <div class="signup_body">
+              <div class="signup">
+                        <h3></h3>
+                    <div class="messages">
+                              <h2>Sorry. Not found about your doctor</h2>
 
-
+                    </div>
+</div>
+</div>
+</div>
+{% endif %}
 
 
 

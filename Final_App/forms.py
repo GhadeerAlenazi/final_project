@@ -2,6 +2,7 @@ from django import forms
 from .models import Profile, doctors, User, contact
 
 
+
 class ProfileForm(forms.ModelForm):
     picture = forms.ImageField(required = False)
 

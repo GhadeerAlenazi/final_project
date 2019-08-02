@@ -2,12 +2,21 @@
 {% block title %}
 THANK YOU
 {% endblock %}
-   {% block body %}
+{% block body %}
+<div class="container">
+    <div class="signup_body">
 
-   {% if messages %}
-    {% for i in messages%}
-    <p>{{i}}</p>
-    {%endfor%}
-    {%endif%}
+        <div class="signup">
+            <h3></h3> 
+            {% if messages %}
+            {% for i in messages%}
+            <div class="messages">
+                <h2>{{i}}</h2>
+            </div>
 
-    {% endblock %}
+            {%endfor%}
+            {%endif%}
+        </div>
+    </div>
+</div>
+{% endblock %}

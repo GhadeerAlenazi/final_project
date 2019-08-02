@@ -20,9 +20,18 @@ from Final_App import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework import routers
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.urls import include
+
+router = routers.DefaultRouter()
+router.register(r'doctors', views.DoctorViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home_english, name='home_english'),
+    path('api/', include(router.urls)),
+    path('api/token', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/referesh', TokenRefreshView.as_view(), name='token_refresh'),
+    path('', views.home_english, name='home_english'),
     path('about/', views.about, name='about'),
     path('home_arabic/', views.home_arabic, name ='home_arabic'),
     path('contactus/', views.contactus, name ='contact'),
@@ -32,10 +41,14 @@ urlpatterns = [
     path('signup/', views.signup, name ='signup'),
     path('doctorprofile/', views.Dprofile, name ='doctor'),
     path('userprofile/<str:username>', views.Uprofile, name ='user'),
+    path('feedback/', views.feedback, name = 'feedback'),
     path('thanks/', views.thanks, name = 'thanks'),
+    path('msgdel/', views.msgdel, name = 'msgdel'),
     path('search_result/', views.search_result, name='search_result'),
     path('booking/<int:id>', views.booking, name='booking'),
     path('save/<str:username>', views.savebooking, name='savebooking'),
+    path('delete/<int:keyword>', views.delete_appointment, name='delete-item'),
+
 
     # path(r'^search_result/(?P<clinic>\w+)/(?P<Hospital>\w+)/(?P<Gender>\w+)/(?P<City>\w+)/$', views.search_result, name='search_result'),
 

@@ -46,6 +46,9 @@ class contact(models.Model):
     user_email = models.EmailField()
     user_text = models.CharField(max_length=10000)
 
+    def __str__(self):
+        return self.user_name
+
 class appointment(models.Model):
     username = models.CharField(max_length=100)
     date = models.CharField(max_length=100)

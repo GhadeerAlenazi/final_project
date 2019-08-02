@@ -354,7 +354,7 @@ input{
     padding-top: 30px;
     color: rgb(170, 0, 0);
 }
-.signup{
+.signup, .signupmsg{
    width: 70%;
    margin: 30px auto;
    background-image: url('../img/doctors.jpg');
@@ -376,18 +376,23 @@ input{
     border-radius: 10px;
     font-weight: bold ;
     font-size: 15px;
+    float: left;
+    margin: 10px;
 }
+
 #booking{
     float: right ;
-    width: 200px;
+    width: 230px;
     padding: 20px;
     margin-right: 30px;
     border: 1px gray  solid; 
     border-radius: 10px;
     background-color: rgba(128, 128, 128, 0.33) ;
+    
 }
+
 .btndate{
-    width: 110px;
+    width: 180px;
     margin-bottom: 5px;
     margin-top: 20px;
     background-color: darkred ;
@@ -398,6 +403,15 @@ input{
     font-weight: bold ;
     font-size: 15px;
 }
+
+.btndate:hover{
+    cursor: pointer; 
+}
+
+h5{
+    color: darkred;
+}
+
 .btn{
     width: 80px;
     float: right ;
@@ -485,9 +499,21 @@ input{
 {
     color: #f2b600;
 }
-
-/* appointment html */
+/* ------------------------------messages-----------------------------*/
+.messages{
+    border: 1px gray  solid; 
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.33) ;
+	opacity: 0.9;
+    padding: 20px;
+    margin: 15px auto;
+    margin-top: 40px;
+    width: 60%;
+    padding-bottom: 50px; 
+}
+/* -----------------------------appointment html----------------------- */
 .appointment{
+    overflow: hidden;
     border: 1px gray  solid; 
     border-radius: 10px;
     width: 50%;
@@ -497,6 +523,22 @@ input{
 
     
 }
+.data{
+    float: left;
+}
+.btndel{
+    width: 80px;
+    background-color: darkred ;
+    border: none ;
+    color: white ;
+    height: 40px;
+    border-radius: 10px;
+    font-weight: bold ;
+    font-size: 15px;
+    margin: 30px;
+    float: right;
+}
+/*------------footer -------------------------*/
 .footer{
     text-align: center ;
     padding-top: 40px;
@@ -509,7 +551,19 @@ input{
     height: 90px;
 }
 
+.loginbtn{
+    background-color: darkred;
+    color: white;
+    padding: 10px;
+    margin: 3px;
+    font-weight: bold;
+    border-radius: 7px;
+}
 
+.loginbtn:hover{
+    cursor: pointer ;
+    background-color: rgb(67, 137, 152) ;
+}
 
 
 

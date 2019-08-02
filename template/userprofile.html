@@ -6,14 +6,30 @@ USER PROFILE
 <div class="container">
     <div class="signup_body">
         <div class="signup">
-            <h2>{{user.username}} appointments</h2>
-                {% for i in appointment_user %}
-                <div class="appointment">
-                <p>Name: {{i.username}}</p>
-                <p>Date: {{i.date}}</p>
-            </div>
-                {% endfor %}
             
+            {% if appointment_user%}
+            <h2>{{user.username}} appointments</h2>
+            {% for i in appointment_user %}
+            <div class="appointment">
+                <div class="data">
+                    <p>Name: {{i.username}}</p>
+                    <p>Date: {{i.date}}</p>
+                </div>
+
+                <button class="btndel"><a href="{% url 'delete-item' i.pk %}" id="pos">Delete</a></button>
+
+            </div>
+            {% endfor %}
+            {% else %}
+
+                        <h3></h3>
+                    <div class="messages">
+                              <h2>Sorry {{user.username}}. You don't have appointment</h2>
+
+                    </div>
+
+{% endif %}
+
         </div>
     </div>
 </div>

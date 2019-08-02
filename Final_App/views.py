@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 from django.http import HttpResponse
 from .forms import signup_form, LoginForm, ProfileForm, contactForm, DoctorProfile
 from django.http import HttpResponseRedirect, Http404
@@ -7,6 +7,15 @@ from .models import Profile, doctors, User, appointment
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 import json
+from django.core import serializers
+from rest_framework import viewsets
+from .serializers import DoctorSerializer
+
+
+class DoctorViewSet(viewsets.ModelViewSet):
+    queryset = doctors.objects.all()
+    serializer_class = DoctorSerializer
+
 def home_english(request):
     return render(request, 'home_English.html')
 
@@ -21,7 +30,7 @@ def contactus(request):
         if form.is_valid():
             form = form.save(commit=True)
            
-
+            return HttpResponseRedirect('/feedback/')
     data={
         'form' : form
     }
@@ -84,7 +93,6 @@ def search(request):
      return render(request, 'search.html', data) 
 
 def search_result(request):
-    booking = []
     try:
 
         clinic = request.GET['clinic']
@@ -97,16 +105,12 @@ def search_result(request):
             Gender__icontains=Gender,
             City__icontains=City,
         )
-        
     except:
         raise Http404()
     
-    # for i in form:
-    #     booking = [i.to_date.hour - i.from_date.hour]
         
     data = {
         "form_search_result": form,
-        # 'b':booking
     }
     return render(request, 'result_search.html', data) 
 
@@ -124,10 +128,8 @@ def booking(request, id):
 def savebooking(request, username):
     
     date_for_booking = request.POST.get('booking')
-    # booking = doctors.objects.get(pk = id)
     booking = appointment()
         
-    # name = request.POST.get('user_name')
     booking.username = username
     booking.date = date_for_booking
     booking.save()
@@ -136,6 +138,11 @@ def savebooking(request, username):
         
     }   
     return render(request, 'savebooking.html', data)  
+def feedback(request):
+
+    messages.success(request, 'Thank you for your feedback')
+
+    return render(request, 'thanks.html') 
 def thanks(request):
 
     messages.success(request, 'Thank you for Registration')
@@ -168,10 +175,24 @@ def signup(request):
     return render(request, 'signup.html', data)  
 
 def Uprofile(request, username):
+   
     appointment_user = appointment.objects.filter(username__icontains=username)
    
     data = {
         "appointment_user":appointment_user
     }
     return render(request, 'userprofile.html', data) 
+
+def delete_appointment(request, keyword):
+    delete_appointment = get_object_or_404(appointment, pk = keyword)
+    if delete_appointment:
+        delete_appointment.delete()
+        return HttpResponseRedirect('/msgdel/')
+
+def msgdel(request):
+
+    messages.success(request, 'The deleted was Successfully')
+
+    return render(request, 'thanks.html') 
+
 # Create your views here.
