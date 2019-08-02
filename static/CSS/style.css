@@ -59,7 +59,8 @@ p{
 
 .contener{
     width: 1100px;
-    margin: 0 auto;
+    margin: 10px auto;
+    
 }
 
 
@@ -106,15 +107,7 @@ p{
     color: black;
     padding: 25px;
 }
-/* button{
-    background-color: crimson;
-    color:black;
-    padding: 20px;
-    font-size: 24px;
-    border: none;
-    cursor: pointer;
-    box-align: center;
-} */
+
 button:hover{
     background-color :cornflowerblue;
     color: white;
@@ -340,17 +333,7 @@ button:hover{
     margin-left: 1;
 }
 
-/* form{
-    border: 1px gray  solid; 
-    border-radius: 10px;
-    background-color: rgba(128, 128, 128, 0.33) ;
-	opacity: 0.9;
-    padding: 20px;
-    margin: 15px auto;
-    width: 60%;
-    padding-bottom: 50px; 
-      
-} */
+
 #search_page{
     
         padding: 30px;
@@ -378,7 +361,8 @@ input{
    background-repeat: no-repeat ;
    background-size: cover ;
    border-radius: 10px;
-    padding-bottom: 30px;
+   padding-bottom: 30px;
+   margin-bottom: 100px;
     
 }
 .btnsave{
