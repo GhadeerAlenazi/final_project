@@ -5,53 +5,94 @@ SEARCH RESULT
 {% block body %}
 
 
-<!-- <div class="clr"></div>
-        
-                <h3 id="heading1"> search by doctor name :</h3>
-
-                <section id="contact" class="by-3">
-                        
-                         <form action="#">
-                             <div class="form-group">
-                                 <label for="name">Doctor Name</label>
-                                 <input type="text" name="name" id="name">
-                             </div>
-                             <h3> OR </h3>
-
-                             <div class="form-group">
-                                    <label for="Specialty"> Choose Specialty </label>
-                                    <input type="text" name="Specialty" id="Specialty">
-                                </div>
-
-                             <div class="form-group">
-                                  <label for="city"> Choose City </label>
-                                  <input type="text" name="city" id="city">
-                              </div>
-
-                              <div class="form-group">
-                                    <label for="neighborhood"> Choose neighborhood </label>
-                                    <input type="text" name="neighborhood" id="neighborhood"> 
-                                  </div>
-
-                                  <button class="but2"><a href="about.html">Search </a> </button>
-                         </form>
-                        
-                    </section>  -->
 
 {% for i in form_search_result %}
-<div class="list">
-    <div class="content">
-            <p>Name: {{i.full_name}} &nbsp &nbsp Clinic: {{i.clinic}}</p>
-            <!-- <p>Clinic: {{i.clinic}}</p> -->
-            <p>Hospital: {{i.Hospital}} &nbsp &nbsp phone: {{i.phone}}</p>
-            <!-- <p>phone: {{i.phone}}</p> -->
-            <p>price: {{i.price}} &nbsp &nbsp Gender: {{i.Gender}}</p>
-            <!-- <p>Gender: {{i.Gender}}</p> -->
-            <p>City: {{i.City}} &nbsp &nbsp rating: {{i.rating}}</p>
-            <!-- <p>rating: {{i.rating}}</p> -->
-    </div>
-   
-    <img src="{{i.picture.url}}" alt="">
+<div class="signup">
+      <div class="list">
+            <div class="content">
+                  {% if i == 'null' %}
+                  <p>sorry</p>
+                  {% else %}
+                  <img src="{{i.picture.url}}" alt="">
+                  <br>
+                  <p><strong> Name</strong>: {{i.full_name}}</p>
+                  <p><strong> Gender</strong>: {{i.Gender}}</p>
+                  <br>
+                  <p><strong> Hospital</strong>: {{i.Hospital}} &nbsp &nbsp <strong> phone</strong>: {{i.phone}}</p>
+                  <p><strong> price</strong>: {{i.price}} &nbsp &nbsp <strong> Clinic</strong>: {{i.clinic}} &nbsp &nbsp
+                        <strong> City</strong>: {{i.City}} </p>
+                
+
+                  <p><strong> From</strong>: {{i.from_date}} &nbsp &nbsp <strong> To</strong>: {{i.to_date}}</p>
+                  <!-- <p>To: {{i.to_date}}</p> -->
+                  <!-- Counting Visitors using free hit counter -->
+                  <div class="star">
+                        <div class="visitors_counter">
+
+                              <script type="text/javascript" src="https://freehitcounters.org/count/2dzi"></script><br>
+                        </div>
+
+                        <!-- Rating Stars -->
+
+
+                        <div class="star-rating">
+
+                              <input id="star-5" type="radio" name="rating" value="star-5">
+                              <label for="star-5" title="5 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                              </label>
+
+
+                              <input id="star-4" type="radio" name="rating" value="star-4">
+                              <label for="star-4" title="4 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                              </label>
+
+                              <input id="star-3" type="radio" name="rating" value="star-3">
+                              <label for="star-3" title="3 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                              </label>
+
+
+                              <input id="star-2" type="radio" name="rating" value="star-2">
+                              <label for="star-2" title="2 stars">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                              </label>
+
+
+                              <input id="star-1" type="radio" name="rating" value="star-1">
+                              <label for="star-1" title="1 star">
+                                    <i class="active fa fa-star" aria-hidden="true"></i>
+                              </label>
+                        </div>
+
+
+                  </div>
+
+
+
+            </div>
+
+            <form action="{% url 'booking' i.id %}" method="POST" id ="systemform">
+
+                  <div id='booking'>
+
+                        {% csrf_token %}
+                       
+                        <!-- <button type="submit" name="date" value={{i.to_date}} form = 'systemform'>{{i.to_date}}</button> -->
+                        <button type ='submit' name="date" value="July 31,2019, 12:00 p.m" form = 'systemform' class="btndate">July 31,2019, 12:00 p.m</button><br>
+                        <button type ='submit' name="date" value="July 31,2019, 12:00 p.m" form = 'systemform' class="btndate">July 31,2019, 12:00 p.m</button><br>
+                        <button type ='submit' name="date" value="July 31,2019, 1:00 p.m" form = 'systemform' class="btndate">July 31,2019, 1:00 p.m</button><br>
+                        <button type ='submit' name="date" value="July 31,2019, 2:00 p.m" form = 'systemform' class="btndate">July 31,2019, 2:00 p.m</button><br>
+                        <button type ='submit' name="date" value="July 31,2019, 3:00 p.m" form = 'systemform' class="btndate">July 31,2019, 3:00 p.m</button><br>
+
+                       
+
+                  </div>
+
+            </form>
+{% endif %}
+      </div>
 </div>
 
 {% endfor%}

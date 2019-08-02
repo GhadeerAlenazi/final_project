@@ -23,6 +23,12 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget = forms.PasswordInput)
 
 class DoctorProfile(forms.ModelForm):
+    # av_date = forms.CharField(
+    #     widget=forms.DateTimeInput(attrs={
+    #         # 'class': 'form-control datetimepicker-input',
+    #         'type': 'date'
+    #     })
+    # )
     class Meta: 
         model = doctors
         fields = ['clinic','Hospital','Gender','City']
@@ -34,6 +40,5 @@ class contactForm(forms.ModelForm):
     class Meta: 
         model = contact
         fields = '__all__'
-
 
 

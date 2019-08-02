@@ -3,10 +3,10 @@ from django.http import HttpResponse
 from .forms import signup_form, LoginForm, ProfileForm, contactForm, DoctorProfile
 from django.http import HttpResponseRedirect, Http404
 from django.contrib import messages
-from .models import Profile, doctors
+from .models import Profile, doctors, User, appointment
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+import json
 def home_english(request):
     return render(request, 'home_English.html')
 
@@ -74,19 +74,7 @@ def search(request):
      
      form = DoctorProfile()
      data_2 = []
-     if request.method == 'POST':
-        form = DoctorProfile(request.POST)
-        if form.is_valid():
 
-            clinic = form.cleaned_data['clinic']
-            Hospital = form.cleaned_data['Hospital']
-            Gender = form.cleaned_data['Gender']
-            City = form.cleaned_data['City']
-
-            item = form.save(commit=False)
-            
-            data_2= [clinic, Hospital, Gender, City]
-            search_result(request, clinic, Hospital, Gender, City)
 
      data = {
         "form_search": form,
@@ -95,26 +83,59 @@ def search(request):
     }
      return render(request, 'search.html', data) 
 
-def search_result(request, clinic, Hospital, Gender, City):
+def search_result(request):
+    booking = []
     try:
-        
+
+        clinic = request.GET['clinic']
+        Hospital = request.GET['Hospital']
+        Gender= request.GET['Gender']
+        City= request.GET['City']
+
         form = doctors.objects.filter(clinic__icontains=clinic,
             Hospital__icontains=Hospital,
             Gender__icontains=Gender,
             City__icontains=City,
         )
         
-
     except:
         raise Http404()
     
-
-    
+    # for i in form:
+    #     booking = [i.to_date.hour - i.from_date.hour]
+        
     data = {
-        "form_search_result": form
+        "form_search_result": form,
+        # 'b':booking
     }
     return render(request, 'result_search.html', data) 
 
+def booking(request, id):
+    
+    date = request.POST.get('date', None)
+    id_Doctor = id
+    booking = doctors.objects.get(pk = id)
+    data = {
+        "date": date,
+        'id': id_Doctor,
+        "informtion_dector":booking
+    }
+    return render(request, 'booking.html', data) 
+def savebooking(request, username):
+    
+    date_for_booking = request.POST.get('booking')
+    # booking = doctors.objects.get(pk = id)
+    booking = appointment()
+        
+    # name = request.POST.get('user_name')
+    booking.username = username
+    booking.date = date_for_booking
+    booking.save()
+    data = {
+        "date": id,
+        
+    }   
+    return render(request, 'savebooking.html', data)  
 def thanks(request):
 
     messages.success(request, 'Thank you for Registration')
@@ -127,7 +148,7 @@ def signup(request):
     if request.method == 'POST':
         form = signup_form(request.POST)
         profileform = ProfileForm(request.POST)
-        if form.is_valid():
+        if form.is_valid() and profileform.is_valid():
             item = form.save(commit=False)
             if 'picture' in request.FILES:
                 item.picture = request.FILES['picture']
@@ -137,7 +158,7 @@ def signup(request):
                 puser = form.save(commit=False)
                 puser.user = item
                 puser.save()
-                item.save()
+                
                 return HttpResponseRedirect('/thanks/')
 
     data = {
@@ -146,6 +167,11 @@ def signup(request):
     }
     return render(request, 'signup.html', data)  
 
-def Uprofile(request):
-    return render(request, 'userprofile.html')  
+def Uprofile(request, username):
+    appointment_user = appointment.objects.filter(username__icontains=username)
+   
+    data = {
+        "appointment_user":appointment_user
+    }
+    return render(request, 'userprofile.html', data) 
 # Create your views here.

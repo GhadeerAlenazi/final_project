@@ -11,6 +11,7 @@ class Profile(models.Model):
     lastname = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     picture = models.ImageField(upload_to='users')
+    booking= models.CharField(max_length=100)
 
     def __str__(self):
         return self.user.username
@@ -33,6 +34,10 @@ class doctors(models.Model):
     City = models.CharField(max_length=100, choices=Cities, default='Riyadh')
     picture = models.ImageField(upload_to='doctors')
     rating = models.CharField(max_length=100, choices=Ratings, default='0')
+    from_date = models.DateTimeField(default=timezone.now, null=True)
+    to_date = models.DateTimeField(default=timezone.now, null=True)
+
+    
     def __str__(self):
         return self.full_name
 
@@ -41,5 +46,9 @@ class contact(models.Model):
     user_email = models.EmailField()
     user_text = models.CharField(max_length=10000)
 
+class appointment(models.Model):
+    username = models.CharField(max_length=100)
+    date = models.CharField(max_length=100)
 
-
+    def __str__(self):
+        return self.username

@@ -3,23 +3,23 @@
 CONTACT US
 {% endblock %}
 {% block body %}
-<div id="backgroundcolor">
 
 
-  <div id="container">
-
-      <div class="signup">
-    <form action="" method="POST">
+    <div class="container">
+        <div class="signup_body">
+            <div class="signup">
+          <h2>Send Your FeedBack</h2>
+    <form action="" method="POST" id="contact_form">
       {% csrf_token%}
       {{form.as_p}}
       <input type="submit" value="Send" class="btn">
     </form>
 
-
+</div>
   </div>
 </div>
 
-  <section id="infocontact">
+  <!-- <section id="infocontact">
 
     <h4>Call Us :</h4>
     <h4>frome Saudi</h4>
@@ -35,7 +35,7 @@ CONTACT US
     <h4><i class="fab fa-facebook-square fa-2x"></i> <i class="fab fa-twitter fa-2x"></i></h4>
 
   </section>
-
+ -->
 
 
   {% endblock %}

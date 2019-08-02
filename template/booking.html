@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% block title %}
+SEARCH RESULT
+{% endblock %}
+{% block body %}
+
+
+
+
+<div class="signup">
+    <div class="list">
+        <div class="content">
+            <form action="{% url 'savebooking' user.username %}" method="POST" id="savebooking">
+                {% csrf_token %}
+                {% if not user.is_authenticated %}
+                <p>please login to complete your booking</p>
+                {% else %}
+                <h2>Your appointment</h2>
+                <p><strong>Your Name</strong>: {{user.username}}</p>
+                <p><strong>Email</strong> : {{user.email}}</p>
+                <p><strong>Doctor Name</strong>:{{informtion_dector.full_name}}</p>
+                <p><strong>Clinic</strong> :{{informtion_dector.clinic}}</p>
+                <p><strong>Hospital</strong>:{{informtion_dector.Hospital}}</p>
+                <p><strong>Date</strong>: {{date}}</p>
+
+
+
+                {% endif %}
+                <button type="submit" name='booking' value={{date}} form="savebooking" class="btnsave">Save</button>
+            </form>
+            <button class="btnsave"><a href="{% url 'home_english' %}">Cancel</a></button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

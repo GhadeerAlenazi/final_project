@@ -31,9 +31,13 @@ urlpatterns = [
     path('search/', views.search, name ='search'),
     path('signup/', views.signup, name ='signup'),
     path('doctorprofile/', views.Dprofile, name ='doctor'),
-    path('userprofile/', views.Uprofile, name ='user'),
+    path('userprofile/<str:username>', views.Uprofile, name ='user'),
     path('thanks/', views.thanks, name = 'thanks'),
-    path('search_result/<str:clinic>/<str:Hospital>/<str:Gender>/<str:City>', views.search_result, name='search_result'),
+    path('search_result/', views.search_result, name='search_result'),
+    path('booking/<int:id>', views.booking, name='booking'),
+    path('save/<str:username>', views.savebooking, name='savebooking'),
+
     # path(r'^search_result/(?P<clinic>\w+)/(?P<Hospital>\w+)/(?P<Gender>\w+)/(?P<City>\w+)/$', views.search_result, name='search_result'),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

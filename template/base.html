@@ -19,11 +19,13 @@
          <ul>
                 <li><a href="{% url 'about'%}">About Us</a></li>
              <li><a class="current" href="{% url 'contact'%}">Contact Us</a></li>
+
              {% if not user.is_authenticated %}
              <li><a href="{% url 'login'%}">Login</a></li>
              <li><a href="{% url 'signup'%}">SignUp</a></li>
              {% else %}
-
+             <li><a href="{% url 'search'%}">Search</a></li>
+            <li><a href="{% url 'user' user.username %}">My Appointment</a></li>
              <li><a href="{% url 'logout'%}">LogOut</a></li>
              {% endif%}
              <li><a href="{%url 'home_arabic'%}">العربية</a></li>
@@ -31,7 +33,7 @@
          </div>
      </nav>
      {% block body %}{% endblock %}
-     <footer id="main-footer" class="clr"> 
+     <footer id="main-footer" class="footer"> 
         <p> Vezeeta - Saudi Arabia​ &copy; 2019 all right reserved</p>
     </footer>
 </body>

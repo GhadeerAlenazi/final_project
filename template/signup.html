@@ -9,7 +9,7 @@ THANK YOU
 
     <div class="signup">
       <h2>Dear user use the following form to create new account:</h2>
-      <form action="" method="POST" enctype="multipart/form-data">
+      <form action="" method="POST" enctype="multipart/form-data" id="signup_form">
         {% csrf_token%}
         {{form_profile.as_p}}
         {{form_signup.as_p}}

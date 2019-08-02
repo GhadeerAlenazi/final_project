@@ -2,5 +2,20 @@
 {% block title %}
 USER PROFILE
 {% endblock %}
-   {% block body %}
-   {% endblock%}
+{% block body %}
+<div class="container">
+    <div class="signup_body">
+        <div class="signup">
+            <h2>{{user.username}} appointments</h2>
+                {% for i in appointment_user %}
+                <div class="appointment">
+                <p>Name: {{i.username}}</p>
+                <p>Date: {{i.date}}</p>
+            </div>
+                {% endfor %}
+            
+        </div>
+    </div>
+</div>
+
+{% endblock%}

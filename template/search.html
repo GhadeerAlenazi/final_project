@@ -1,51 +1,29 @@
 {% extends 'base.html'%}
 {% block title %}
-SEARCH RESULT
+SEARCH 
 {% endblock %}
-   {% block body %}
+{% block body %}
 
-             
-        <!-- <div class="clr"></div>
-        
-                <h3 id="heading1"> search by doctor name :</h3>
+<div class="container">
+    <div class="signup_body">
 
-                <section id="contact" class="by-3">
-                        
-                         <form action="#">
-                             <div class="form-group">
-                                 <label for="name">Doctor Name</label>
-                                 <input type="text" name="name" id="name">
-                             </div>
-                             <h3> OR </h3>
+        <div class="signup">
+                <h2>Chooce from the following to search for your doctor</h2>
 
-                             <div class="form-group">
-                                    <label for="Specialty"> Choose Specialty </label>
-                                    <input type="text" name="Specialty" id="Specialty">
-                                </div>
+            <form action="{% url 'search_result' %}" method="GET" id="search_form">
 
-                             <div class="form-group">
-                                  <label for="city"> Choose City </label>
-                                  <input type="text" name="city" id="city">
-                              </div>
+                {% csrf_token%}
 
-                              <div class="form-group">
-                                    <label for="neighborhood"> Choose neighborhood </label>
-                                    <input type="text" name="neighborhood" id="neighborhood"> 
-                                  </div>
+                {{form_search.as_p}}
 
-                                  <button class="but2"><a href="about.html">Search </a> </button>
-                         </form>
-                        
-                    </section>  -->
-          
-
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        {% csrf_token%}
-                        
-                        {{form_search.as_p}}
-                        <input type="submit" value="Search" class="btn" >
-                      </form>
+                <input type="submit" value="Search" class="btn">
+            </form>
 
 
-                      
-      {% endblock %}
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
